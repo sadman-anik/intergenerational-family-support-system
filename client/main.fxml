@@ -13,30 +13,58 @@
       managed="true">
 
         <VBox alignment="CENTER"
-            spacing="18"
+            spacing="16"
             styleClass="home-card">
 
             <Label text="Intergenerational Family Support System"
                 styleClass="heading"/>
 
-            <Label text="Community support platform for older couples and young families."
+            <Label text="Login to access member services."
                 styleClass="muted-text"/>
 
-            <Separator prefWidth="320"/>
+            <GridPane hgap="10" vgap="12" alignment="CENTER">
+                <Label text="Email:"
+                    GridPane.rowIndex="0"
+                    GridPane.columnIndex="0"/>
 
-            <Button text="Registration of Older Couples"
+                <TextField fx:id="txtLoginEmail"
+                        promptText="Enter registered email"
+                        prefWidth="270"
+                        GridPane.rowIndex="0"
+                        GridPane.columnIndex="1"/>
+
+                <Label text="Password:"
+                    GridPane.rowIndex="1"
+                    GridPane.columnIndex="0"/>
+
+                <PasswordField fx:id="txtLoginPassword"
+                            promptText="Enter password"
+                            prefWidth="270"
+                            GridPane.rowIndex="1"
+                            GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Button text="Login"
+                    prefWidth="320"
+                    onAction="#handleLogin"
+                    styleClass="primary-button"/>
+
+            <Label text="Maximum three incorrect login attempts allowed."
+                styleClass="warning-text"/>
+
+            <Separator prefWidth="340"/>
+
+            <Label text="New user? Create an account below."
+                styleClass="muted-text"/>
+
+            <Button text="Register as Older Couple"
                     prefWidth="320"
                     onAction="#showOlderCouplePage"
                     styleClass="primary-button"/>
 
-            <Button text="Registration of Young Families"
+            <Button text="Register as Young Family"
                     prefWidth="320"
                     onAction="#showYoungFamilyPage"
-                    styleClass="primary-button"/>
-
-            <Button text="Existing Member Login"
-                    prefWidth="320"
-                    onAction="#showLoginPage"
                     styleClass="primary-button"/>
 
         </VBox>
@@ -124,64 +152,80 @@
         </HBox>
     </VBox>
 
-    <VBox fx:id="loginPage" alignment="CENTER" visible="false" managed="false">
-        <VBox spacing="14" alignment="CENTER" styleClass="login-card">
-            <Label text="Member Login" styleClass="heading"/>
-            <Label text="Sign in using your registered email and password." styleClass="muted-text"/>
-            <Label text="You are allowed only three incorrect attempts at one time." styleClass="warning-text"/>
+    <VBox fx:id="memberMenuPage"
+      alignment="CENTER"
+      spacing="20"
+      visible="false"
+      managed="false">
 
-            <GridPane hgap="10" vgap="12" alignment="CENTER">
-                <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="txtLoginEmail"
-                        promptText="Enter registered email"
-                        prefWidth="260"
-                        GridPane.rowIndex="0"
-                        GridPane.columnIndex="1"/>
+        <VBox alignment="CENTER"
+            spacing="18"
+            styleClass="home-card">
 
-                <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <PasswordField fx:id="txtLoginPassword"
-                            promptText="Enter password"
-                            prefWidth="260"
-                            GridPane.rowIndex="1"
-                            GridPane.columnIndex="1"/>
-            </GridPane>
+            <Label text="Member Dashboard"
+                styleClass="heading"/>
+
+            <Label text="Choose an action to continue."
+                styleClass="muted-text"/>
+
+            <Separator prefWidth="320"/>
+
+            <Button text="View Registered Members"
+                    prefWidth="320"
+                    onAction="#showListPage"
+                    styleClass="primary-button"/>
+
+            <Button text="View Member Details by FIDN"
+                    prefWidth="320"
+                    onAction="#showDetailsPage"
+                    styleClass="primary-button"/>
+
+            <Button text="Create New Event"
+                    prefWidth="320"
+                    onAction="#showCreateEventPage"
+                    styleClass="primary-button"/>
+
+            <Button text="View Events"
+                    prefWidth="320"
+                    onAction="#showViewEventsPage"
+                    styleClass="primary-button"/>
+
+            <Button text="Logout"
+                    prefWidth="320"
+                    onAction="#handleLogout"
+                    styleClass="logout-button"/>
+
+        </VBox>
+    </VBox>
+
+    <VBox fx:id="listPage" alignment="CENTER" visible="false" managed="false">
+        <VBox spacing="16" styleClass="page-card">
+            <Label text="Registered Members" styleClass="heading"/>
+            <Label text="View all registered family identification numbers." styleClass="muted-text"/>
+
+            <ListView fx:id="listMembers" prefWidth="760" prefHeight="430" styleClass="modern-list"/>
 
             <HBox spacing="12" alignment="CENTER">
-                <Button text="Login" onAction="#handleLogin" styleClass="primary-button"/>
-                <Button text="Back" onAction="#showHomePage"/>
+                <Button text="Refresh" onAction="#handleViewMemberSummaries" styleClass="primary-button" prefWidth="150"/>
+                <Button text="Back" onAction="#showMemberMenuPage" prefWidth="150"/>
             </HBox>
         </VBox>
     </VBox>
 
-    <VBox fx:id="memberMenuPage" spacing="16" alignment="CENTER" visible="false" managed="false">
-        <Label text="Member Menu" styleClass="heading"/>
-        <Button text="View List of Registered Couples and Families" onAction="#showListPage"/>
-        <Button text="View Specific Member Details (FIDN)" onAction="#showDetailsPage"/>
-        <Button text="Create New Event" onAction="#showCreateEventPage"/>
-        <Button text="View Events" onAction="#showViewEventsPage"/>
-        <Button text="Logout" onAction="#handleLogout"/>
-    </VBox>
+    <VBox fx:id="detailsPage" alignment="CENTER" visible="false" managed="false">
+        <VBox spacing="16" styleClass="page-card">
+            <Label text="Member Details" styleClass="heading"/>
+            <Label text="Search by FIDN to view contact details." styleClass="muted-text"/>
 
-    <VBox fx:id="listPage" spacing="10" visible="false" managed="false">
-        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
-        <Label text="Registered Member FIDNs" styleClass="heading"/>
-        <ListView fx:id="listMembers" prefHeight="520"/>
-        <HBox spacing="10">
-            <Button text="Refresh" onAction="#handleViewMemberSummaries"/>
-            <Button text="Back" onAction="#showMemberMenuPage"/>
-        </HBox>
-    </VBox>
+            <HBox spacing="10" alignment="CENTER">
+                <TextField fx:id="txtSearchFidn" promptText="Enter FIDN" prefWidth="220"/>
+                <Button text="Search" onAction="#handleViewDetailsByFidn" styleClass="primary-button" prefWidth="120"/>
+            </HBox>
 
-    <VBox fx:id="detailsPage" spacing="10" visible="false" managed="false">
-        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
-        <Label text="View Specific Member Details" styleClass="heading"/>
-        <HBox spacing="10">
-            <Label text="Enter FIDN:"/>
-            <TextField fx:id="txtSearchFidn"/>
-            <Button text="Search" onAction="#handleViewDetailsByFidn"/>
-        </HBox>
-        <TextArea fx:id="txtOutput" prefHeight="480"/>
-        <Button text="Back" onAction="#showMemberMenuPage"/>
+            <TextArea fx:id="txtOutput" prefWidth="760" prefHeight="420" wrapText="true" styleClass="result-box"/>
+
+            <Button text="Back" onAction="#showMemberMenuPage" prefWidth="150"/>
+        </VBox>
     </VBox>
 
     <VBox fx:id="createEventPage" spacing="8" visible="false" managed="false">
@@ -239,14 +283,18 @@
         </HBox>
     </VBox>
 
-    <VBox fx:id="viewEventsPage" spacing="10" visible="false" managed="false">
-        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
-        <Label text="Created Events" styleClass="heading"/>
-        <ListView fx:id="listEvents" prefHeight="520"/>
-        <HBox spacing="10">
-            <Button text="Refresh" onAction="#handleViewEvents"/>
-            <Button text="Back" onAction="#showMemberMenuPage"/>
-        </HBox>
+    <VBox fx:id="viewEventsPage" alignment="CENTER" visible="false" managed="false">
+        <VBox spacing="16" styleClass="page-card">
+            <Label text="Community Events" styleClass="heading"/>
+            <Label text="View all events created by registered members." styleClass="muted-text"/>
+
+            <ListView fx:id="listEvents" prefWidth="820" prefHeight="450" styleClass="modern-list"/>
+
+            <HBox spacing="12" alignment="CENTER">
+                <Button text="Refresh" onAction="#handleViewEvents" styleClass="primary-button" prefWidth="150"/>
+                <Button text="Back" onAction="#showMemberMenuPage" prefWidth="150"/>
+            </HBox>
+        </VBox>
     </VBox>
 
 </StackPane>

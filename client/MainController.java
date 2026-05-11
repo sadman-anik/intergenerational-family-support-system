@@ -17,7 +17,6 @@ public class MainController {
     @FXML private VBox homePage;
     @FXML private VBox olderCouplePage;
     @FXML private VBox youngFamilyPage;
-    @FXML private VBox loginPage;
     @FXML private VBox memberMenuPage;
     @FXML private VBox listPage;
     @FXML private VBox detailsPage;
@@ -108,17 +107,10 @@ public class MainController {
     }
 
     @FXML
-    private void showLoginPage() {
-        setVisiblePage(loginPage);
-        txtLoginEmail.clear();
-        txtLoginPassword.clear();
-    }
-
-    @FXML
     private void showMemberMenuPage() {
         if (!isLoggedIn()) {
             showError("Please login first.");
-            showLoginPage();
+            showHomePage();
             return;
         }
         setVisiblePage(memberMenuPage);
@@ -128,7 +120,7 @@ public class MainController {
     private void showListPage() {
         if (!isLoggedIn()) {
             showError("Please login first.");
-            showLoginPage();
+            showHomePage();
             return;
         }
         setVisiblePage(listPage);
@@ -139,7 +131,7 @@ public class MainController {
     private void showDetailsPage() {
         if (!isLoggedIn()) {
             showError("Please login first.");
-            showLoginPage();
+            showHomePage();
             return;
         }
         setVisiblePage(detailsPage);
@@ -151,7 +143,7 @@ public class MainController {
     private void showCreateEventPage() {
         if (!isLoggedIn()) {
             showError("Please login first.");
-            showLoginPage();
+            showHomePage();
             return;
         }
         setVisiblePage(createEventPage);
@@ -161,7 +153,7 @@ public class MainController {
     private void showViewEventsPage() {
         if (!isLoggedIn()) {
             showError("Please login first.");
-            showLoginPage();
+            showHomePage();
             return;
         }
         setVisiblePage(viewEventsPage);
@@ -170,7 +162,7 @@ public class MainController {
 
     private void setVisiblePage(VBox pageToShow) {
         VBox[] pages = {
-                homePage, olderCouplePage, youngFamilyPage, loginPage, memberMenuPage,
+                homePage, olderCouplePage, youngFamilyPage, memberMenuPage,
                 listPage, detailsPage, createEventPage, viewEventsPage
         };
 
