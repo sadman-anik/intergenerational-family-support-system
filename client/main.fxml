@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainController" prefWidth="1050" prefHeight="760">
+
+    <VBox fx:id="homePage" spacing="16" alignment="CENTER" visible="true" managed="true">
+        <Label text="Intergenerational Family Support System (IGFSS)" styleClass="heading"/>
+        <Button text="Registration of Older Couples" onAction="#showOlderCouplePage"/>
+        <Button text="Registration of Young Families" onAction="#showYoungFamilyPage"/>
+        <Button text="Existing Member Login" onAction="#showLoginPage"/>
+    </VBox>
+
+    <VBox fx:id="olderCouplePage" spacing="8" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="Register Older Couple" styleClass="heading"/>
+        <Label text="Password rule: exactly 10 characters and must contain letters and numbers."/>
+        <GridPane hgap="10" vgap="8">
+            <Label text="Husband Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtHusbandName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Wife Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtWifeName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Husband Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtHusbandPhone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Wife Phone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtWifePhone" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Husband Email / Username:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtHusbandEmail" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label text="Wife Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtWifeEmail" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label text="Address:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtOlderAddress" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label text="Years Married:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtYearsMarried" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+            <Label text="Password:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtOlderPassword" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+        </GridPane>
+        <HBox spacing="10">
+            <Button text="Submit Registration" onAction="#handleRegisterOlderCouple"/>
+            <Button text="Back" onAction="#showHomePage"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="youngFamilyPage" spacing="8" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="Register Young Family" styleClass="heading"/>
+        <Label text="Password rule: exactly 10 characters and must contain letters and numbers."/>
+        <GridPane hgap="10" vgap="8">
+            <Label text="Parent 1 Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent1Name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Parent 2 Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent2Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Parent 1 Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent1Phone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Parent 2 Phone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent2Phone" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Parent 1 Email / Username:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent1Email" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label text="Parent 2 Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtParent2Email" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label text="Address:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtFamilyAddress" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label text="Password:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtFamilyPassword" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Label text="Children Details (maximum four children)" styleClass="subheading"/>
+        <GridPane hgap="10" vgap="8">
+            <Label text="Child 1 Gender:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtChild1Gender" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Child 1 Age:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtChild1Age" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <Label text="Child 2 Gender:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtChild2Gender" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Child 2 Age:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtChild2Age" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <Label text="Child 3 Gender:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtChild3Gender" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Child 3 Age:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtChild3Age" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <Label text="Child 4 Gender:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtChild4Gender" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Child 4 Age:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtChild4Age" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="Submit Registration" onAction="#handleRegisterYoungFamily"/>
+            <Button text="Back" onAction="#showHomePage"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="loginPage" spacing="12" alignment="CENTER" visible="false" managed="false">
+        <Label text="Existing Member Login" styleClass="heading"/>
+        <Label text="Only three incorrect entries are allowed at one time."/>
+        <GridPane hgap="10" vgap="8">
+            <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtLoginEmail" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtLoginPassword" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Login" onAction="#handleLogin"/>
+            <Button text="Back" onAction="#showHomePage"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="memberMenuPage" spacing="16" alignment="CENTER" visible="false" managed="false">
+        <Label text="Member Menu" styleClass="heading"/>
+        <Button text="View List of Registered Couples and Families" onAction="#showListPage"/>
+        <Button text="View Specific Member Details (FIDN)" onAction="#showDetailsPage"/>
+        <Button text="Create New Event" onAction="#showCreateEventPage"/>
+        <Button text="View Events" onAction="#showViewEventsPage"/>
+        <Button text="Logout" onAction="#handleLogout"/>
+    </VBox>
+
+    <VBox fx:id="listPage" spacing="10" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="Registered Member FIDNs" styleClass="heading"/>
+        <ListView fx:id="listMembers" prefHeight="520"/>
+        <HBox spacing="10">
+            <Button text="Refresh" onAction="#handleViewMemberSummaries"/>
+            <Button text="Back" onAction="#showMemberMenuPage"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="detailsPage" spacing="10" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="View Specific Member Details" styleClass="heading"/>
+        <HBox spacing="10">
+            <Label text="Enter FIDN:"/>
+            <TextField fx:id="txtSearchFidn"/>
+            <Button text="Search" onAction="#handleViewDetailsByFidn"/>
+        </HBox>
+        <TextArea fx:id="txtOutput" prefHeight="480"/>
+        <Button text="Back" onAction="#showMemberMenuPage"/>
+    </VBox>
+
+    <VBox fx:id="createEventPage" spacing="8" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="Create New Event" styleClass="heading"/>
+        <GridPane hgap="10" vgap="8">
+            <Label text="Event Type:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventType" promptText="Social Event / Workshop / Activity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Event Date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventDate" promptText="e.g. 2026-05-20" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Event Time:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventTime" promptText="e.g. 10:00 AM" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Duration:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventDuration" promptText="e.g. 2 hours" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Venue:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventVenue" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label text="Cost:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventCost" promptText="0 for free event" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+        </GridPane>
+        <HBox spacing="10">
+            <Button text="Create Event" onAction="#handleCreateEvent"/>
+            <Button text="Back" onAction="#showMemberMenuPage"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="viewEventsPage" spacing="10" visible="false" managed="false">
+        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+        <Label text="Created Events" styleClass="heading"/>
+        <ListView fx:id="listEvents" prefHeight="520"/>
+        <HBox spacing="10">
+            <Button text="Refresh" onAction="#handleViewEvents"/>
+            <Button text="Back" onAction="#showMemberMenuPage"/>
+        </HBox>
+    </VBox>
+
+</StackPane>

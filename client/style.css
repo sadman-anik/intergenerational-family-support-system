@@ -1,0 +1,27 @@
+.root {
+    -fx-font-family: Arial;
+    -fx-background-color: #f7f9fc;
+}
+
+.heading {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.subheading {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-padding: 8 14 8 14;
+    -fx-cursor: hand;
+}
+
+.text-area, .text-field, .password-field, .list-view {
+    -fx-background-radius: 4;
+}
+
+.label {
+    -fx-font-size: 13px;
+}
