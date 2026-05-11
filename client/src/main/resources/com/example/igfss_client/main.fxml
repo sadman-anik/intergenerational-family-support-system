@@ -4,7 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainController" prefWidth="1050" prefHeight="760">
+<StackPane
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="com.example.igfss_client.MainController"
+    prefWidth="1050"
+    prefHeight="760"
+>
 
     <VBox fx:id="homePage"
       alignment="CENTER"

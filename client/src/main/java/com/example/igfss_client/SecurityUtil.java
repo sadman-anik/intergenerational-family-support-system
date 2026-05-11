@@ -1,3 +1,5 @@
+package com.example.igfss_client;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -22,6 +24,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
 
 // Lab-style security utility class.
 // Static methods are used by both client and server.

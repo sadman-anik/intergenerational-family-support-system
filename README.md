@@ -63,6 +63,7 @@ DB_PORT=3306
 
 - JDK 17
 - JavaFX SDK
+- Maven 4
 - MySQL Server
 - MySQL Connector/J
 
@@ -82,6 +83,32 @@ Open another terminal:
 
 ```bash
 ./run_client.sh
+```
+
+If you have the maven build tool, then
+
+### Linux / Mac
+
+If you run on Linux or Mac, follow these steps:
+```sh
+cd HelloFX/Maven/hellofx
+```
+    
+To compile and run the client:
+``` 
+mvn clean javafx:run
+```
+
+### Windows
+
+If you run on Windows, follow these steps:
+```sh
+cd HelloFX\Maven\hellofx
+```
+
+To run the client:
+```
+ mvn clean javafx:run
 ```
 
 ---

@@ -1,13 +1,15 @@
+package com.example.igfss_client;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 
 import java.io.IOException;
 import java.util.ArrayList;

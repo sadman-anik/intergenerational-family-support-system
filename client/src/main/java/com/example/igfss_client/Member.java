@@ -1,3 +1,4 @@
+package com.example.igfss_client;
 import java.io.Serializable;
 
 public class Member implements Serializable {
