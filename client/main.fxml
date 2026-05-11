@@ -6,11 +6,40 @@
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainController" prefWidth="1050" prefHeight="760">
 
-    <VBox fx:id="homePage" spacing="16" alignment="CENTER" visible="true" managed="true">
-        <Label text="Intergenerational Family Support System (IGFSS)" styleClass="heading"/>
-        <Button text="Registration of Older Couples" onAction="#showOlderCouplePage"/>
-        <Button text="Registration of Young Families" onAction="#showYoungFamilyPage"/>
-        <Button text="Existing Member Login" onAction="#showLoginPage"/>
+    <VBox fx:id="homePage"
+      alignment="CENTER"
+      spacing="20"
+      visible="true"
+      managed="true">
+
+        <VBox alignment="CENTER"
+            spacing="18"
+            styleClass="home-card">
+
+            <Label text="Intergenerational Family Support System"
+                styleClass="heading"/>
+
+            <Label text="Community support platform for older couples and young families."
+                styleClass="muted-text"/>
+
+            <Separator prefWidth="320"/>
+
+            <Button text="Registration of Older Couples"
+                    prefWidth="320"
+                    onAction="#showOlderCouplePage"
+                    styleClass="primary-button"/>
+
+            <Button text="Registration of Young Families"
+                    prefWidth="320"
+                    onAction="#showYoungFamilyPage"
+                    styleClass="primary-button"/>
+
+            <Button text="Existing Member Login"
+                    prefWidth="320"
+                    onAction="#showLoginPage"
+                    styleClass="primary-button"/>
+
+        </VBox>
     </VBox>
 
     <VBox fx:id="olderCouplePage" spacing="8" visible="false" managed="false">
@@ -95,19 +124,33 @@
         </HBox>
     </VBox>
 
-    <VBox fx:id="loginPage" spacing="12" alignment="CENTER" visible="false" managed="false">
-        <Label text="Existing Member Login" styleClass="heading"/>
-        <Label text="Only three incorrect entries are allowed at one time."/>
-        <GridPane hgap="10" vgap="8">
-            <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtLoginEmail" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <PasswordField fx:id="txtLoginPassword" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        </GridPane>
-        <HBox spacing="10" alignment="CENTER">
-            <Button text="Login" onAction="#handleLogin"/>
-            <Button text="Back" onAction="#showHomePage"/>
-        </HBox>
+    <VBox fx:id="loginPage" alignment="CENTER" visible="false" managed="false">
+        <VBox spacing="14" alignment="CENTER" styleClass="login-card">
+            <Label text="Member Login" styleClass="heading"/>
+            <Label text="Sign in using your registered email and password." styleClass="muted-text"/>
+            <Label text="You are allowed only three incorrect attempts at one time." styleClass="warning-text"/>
+
+            <GridPane hgap="10" vgap="12" alignment="CENTER">
+                <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtLoginEmail"
+                        promptText="Enter registered email"
+                        prefWidth="260"
+                        GridPane.rowIndex="0"
+                        GridPane.columnIndex="1"/>
+
+                <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="txtLoginPassword"
+                            promptText="Enter password"
+                            prefWidth="260"
+                            GridPane.rowIndex="1"
+                            GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="12" alignment="CENTER">
+                <Button text="Login" onAction="#handleLogin" styleClass="primary-button"/>
+                <Button text="Back" onAction="#showHomePage"/>
+            </HBox>
+        </VBox>
     </VBox>
 
     <VBox fx:id="memberMenuPage" spacing="16" alignment="CENTER" visible="false" managed="false">
@@ -145,18 +188,50 @@
         <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
         <Label text="Create New Event" styleClass="heading"/>
         <GridPane hgap="10" vgap="8">
+
             <Label text="Event Type:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventType" promptText="Social Event / Workshop / Activity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="txtEventType"
+                    promptText="Social Event / Workshop / Activity"
+                    GridPane.rowIndex="0"
+                    GridPane.columnIndex="1"/>
+
             <Label text="Event Date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventDate" promptText="e.g. 2026-05-20" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <Label text="Event Time:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventTime" promptText="e.g. 10:00 AM" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Label text="Duration:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventDuration" promptText="e.g. 2 hours" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <Label text="Venue:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventVenue" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <Label text="Cost:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtEventCost" promptText="0 for free event" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <DatePicker fx:id="datePickerEvent"
+                        GridPane.rowIndex="1"
+                        GridPane.columnIndex="1"/>
+
+            <Label text="Event Hour:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="comboHour"
+                    GridPane.rowIndex="2"
+                    GridPane.columnIndex="1"/>
+
+            <Label text="Event Minute:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="comboMinute"
+                    GridPane.rowIndex="3"
+                    GridPane.columnIndex="1"/>
+
+            <Label text="AM / PM:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="comboAmPm"
+                    GridPane.rowIndex="4"
+                    GridPane.columnIndex="1"/>
+
+            <Label text="Duration:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventDuration"
+                    promptText="e.g. 2 hours"
+                    GridPane.rowIndex="5"
+                    GridPane.columnIndex="1"/>
+
+            <Label text="Venue:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventVenue"
+                    GridPane.rowIndex="6"
+                    GridPane.columnIndex="1"/>
+
+            <Label text="Cost:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEventCost"
+                    promptText="0 for free event"
+                    GridPane.rowIndex="7"
+                    GridPane.columnIndex="1"/>
+
         </GridPane>
         <HBox spacing="10">
             <Button text="Create Event" onAction="#handleCreateEvent"/>

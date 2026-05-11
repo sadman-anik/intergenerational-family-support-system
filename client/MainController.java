@@ -6,6 +6,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,12 +59,15 @@ public class MainController {
     @FXML private TextArea txtOutput;
 
     @FXML private TextField txtEventType;
-    @FXML private TextField txtEventDate;
-    @FXML private TextField txtEventTime;
     @FXML private TextField txtEventDuration;
     @FXML private TextField txtEventVenue;
     @FXML private TextField txtEventCost;
     @FXML private ListView<String> listEvents;
+
+    @FXML private DatePicker datePickerEvent;
+    @FXML private ComboBox<String> comboHour;
+    @FXML private ComboBox<String> comboMinute;
+    @FXML private ComboBox<String> comboAmPm;
 
     private IGFSSClient client;
     private int loginAttempts;
@@ -72,6 +77,18 @@ public class MainController {
         client = new IGFSSClient();
         loginAttempts = 0;
         loggedInFidn = -1;
+        
+        comboHour.getItems().addAll(
+        "01","02","03","04","05","06",
+        "07","08","09","10","11","12"
+        );
+
+        comboMinute.getItems().addAll(
+                "00","05","10","15","20","25",
+                "30","35","40","45","50","55"
+        );
+
+        comboAmPm.getItems().addAll("AM", "PM");
         showHomePage();
     }
 
@@ -299,8 +316,14 @@ public class MainController {
             Event event = new Event();
             event.setFidn(loggedInFidn);
             event.setEventType(requireText(txtEventType.getText(), "Event type"));
-            event.setEventDate(requireText(txtEventDate.getText(), "Event date"));
-            event.setEventTime(requireText(txtEventTime.getText(), "Event time"));
+            event.setEventDate(datePickerEvent.getValue().toString());
+
+            String eventTime =
+                    comboHour.getValue() + ":"
+                    + comboMinute.getValue() + " "
+                    + comboAmPm.getValue();
+
+            event.setEventTime(eventTime);
             event.setDuration(requireText(txtEventDuration.getText(), "Event duration"));
             event.setVenue(requireText(txtEventVenue.getText(), "Event venue"));
             event.setCost(parseRequiredDouble(txtEventCost.getText(), "Event cost"));
@@ -483,8 +506,10 @@ public class MainController {
 
     private void clearEventFields() {
         txtEventType.clear();
-        txtEventDate.clear();
-        txtEventTime.clear();
+        datePickerEvent.setValue(null);
+        comboHour.setValue(null);
+        comboMinute.setValue(null);
+        comboAmPm.setValue(null);
         txtEventDuration.clear();
         txtEventVenue.clear();
         txtEventCost.clear();
