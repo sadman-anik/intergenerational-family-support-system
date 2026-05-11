@@ -1,12 +1,16 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
+// Database username and password are loaded from .env file.
 public class DatabaseUtility {
-    private final String MYSQL_URL;
+    private String MYSQL_URL;
     final String DB_URL;
 
     private Connection sqlConnection;
@@ -14,8 +18,8 @@ public class DatabaseUtility {
     private Statement statement;
 
     private final String dbCreateSQL;
-    private final String USER_NAME;
-    private final String PASSWORD;
+    private String USER_NAME;
+    private String PASSWORD;
 
     private final String TABLE_MEMBERS_QRY;
     private final String TABLE_CHILDREN_QRY;
@@ -25,13 +29,19 @@ public class DatabaseUtility {
     private final String TABLE_SET_FIRST_EVENT_ID;
 
     public DatabaseUtility() {
-        MYSQL_URL = "jdbc:mysql://localhost:3306";
-        DB_URL = MYSQL_URL + "/igfss";
+        Properties env = loadEnv();
 
-        USER_NAME = "root";
-        PASSWORD = "Test$123";
+        String dbHost = env.getProperty("DB_HOST", "localhost");
+        String dbPort = env.getProperty("DB_PORT", "3306");
+        String dbName = env.getProperty("DB_NAME", "igfss");
 
-        dbCreateSQL = "CREATE DATABASE IF NOT EXISTS igfss";
+        USER_NAME = env.getProperty("DB_USER", "root");
+        PASSWORD = env.getProperty("DB_PASSWORD", "");
+
+        MYSQL_URL = "jdbc:mysql://" + dbHost + ":" + dbPort;
+        DB_URL = MYSQL_URL + "/" + dbName;
+
+        dbCreateSQL = "CREATE DATABASE IF NOT EXISTS " + dbName;
 
         TABLE_MEMBERS_QRY = "CREATE TABLE IF NOT EXISTS MEMBERS "
                 + "(fidn INTEGER not NULL AUTO_INCREMENT, "
@@ -70,10 +80,23 @@ public class DatabaseUtility {
                 + "ON DELETE CASCADE )";
 
         TABLE_SET_FIRST_MEMBER_ID = "ALTER TABLE MEMBERS AUTO_INCREMENT = 501";
-        TABLE_SET_FIRST_EVENT_ID = "ALTER TABLE EVENTS AUTO_INCREMENT = 7001";
+        TABLE_SET_FIRST_EVENT_ID = "ALTER TABLE EVENTS AUTO_INCREMENT = 1001";
 
         statement = null;
         initialiseDatabase();
+    }
+
+    private Properties loadEnv() {
+        Properties props = new Properties();
+
+        try (FileInputStream fis = new FileInputStream("../.env")) {
+            props.load(fis);
+        } catch (IOException e) {
+            System.out.println("Could not load .env file: " + e.getMessage());
+            System.out.println("Using default database configuration.");
+        }
+
+        return props;
     }
 
     private void initialiseDatabase() {
@@ -117,6 +140,7 @@ public class DatabaseUtility {
         statement.executeUpdate(TABLE_MEMBERS_QRY);
         statement.executeUpdate(TABLE_CHILDREN_QRY);
         statement.executeUpdate(TABLE_EVENTS_QRY);
+
         statement.executeUpdate(TABLE_SET_FIRST_MEMBER_ID);
         statement.executeUpdate(TABLE_SET_FIRST_EVENT_ID);
     }
