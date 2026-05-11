@@ -87,30 +87,16 @@ Open another terminal:
 
 If you have the maven build tool, then
 
-### Linux / Mac
-
-If you run on Linux or Mac, follow these steps:
+follow these steps:
 ```sh
-cd HelloFX/Maven/hellofx
+cd client
 ```
     
 To compile and run the client:
 ``` 
 mvn clean javafx:run
 ```
-
-### Windows
-
-If you run on Windows, follow these steps:
-```sh
-cd HelloFX\Maven\hellofx
-```
-
-To run the client:
-```
- mvn clean javafx:run
-```
-
+`
 ---
 
 # Notes
