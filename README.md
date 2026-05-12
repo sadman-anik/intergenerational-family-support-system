@@ -51,7 +51,7 @@ Create `.env` file in project root:
 
 ```env
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=
 DB_NAME=igfss
 DB_HOST=localhost
 DB_PORT=3306
