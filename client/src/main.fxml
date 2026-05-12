@@ -6,7 +6,7 @@
 
 <StackPane
     xmlns:fx="http://javafx.com/fxml"
-    fx:controller="com.example.igfss_client.MainController"
+    fx:controller="MainController"
     prefWidth="1050"
     prefHeight="760"
 >

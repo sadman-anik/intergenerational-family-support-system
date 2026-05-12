@@ -1,5 +1,3 @@
-package com.example.igfss_client;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;

@@ -1,5 +1,3 @@
-package com.example.igfss_client;
-
 public class OlderCouple extends Member {
     private static final long serialVersionUID = 1L;
 

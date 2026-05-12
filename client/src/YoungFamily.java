@@ -1,5 +1,3 @@
-package com.example.igfss_client;
-
 import java.util.ArrayList;
 
 public class YoungFamily extends Member {
