@@ -23,6 +23,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+
 // Lab-style security utility class.
 // Static methods are used by both client and server.
 public class SecurityUtil {

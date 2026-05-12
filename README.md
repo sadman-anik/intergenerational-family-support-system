@@ -51,7 +51,7 @@ Create `.env` file in project root:
 
 ```env
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=
 DB_NAME=igfss
 DB_HOST=localhost
 DB_PORT=3306
@@ -63,6 +63,7 @@ DB_PORT=3306
 
 - JDK 17
 - JavaFX SDK
+- Maven 4
 - MySQL Server
 - MySQL Connector/J
 
@@ -84,6 +85,18 @@ Open another terminal:
 ./run_client.sh
 ```
 
+If you have the maven build tool, then
+
+follow these steps:
+```sh
+cd client
+```
+    
+To compile and run the client:
+``` 
+mvn clean javafx:run
+```
+`
 ---
 
 # Notes
